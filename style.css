@@ -19,24 +19,23 @@ body {
   background-color: var(--bg-color);
 }
 
-/* Header/Navigation */
+/* Header & Navigation */
 header {
-  background-color: white;
+  background-color: #fff;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 100%;
-  top: 0px;
+  top: 0;
+  z-index: 100;
 }
 
 nav {
   max-width: 1500px;
-  margin-left: 60px;
+  margin-left: 65px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position:sticky;
-  top: 0px;
 }
 
 .logo {
@@ -45,7 +44,6 @@ nav {
   color: var(--primary-color);
 }
 
-/* Navigation Links */
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -53,7 +51,7 @@ nav {
 
 .nav-links a {
   text-decoration: none;
-  color: rgb(1, 1, 1);
+  color: var(--text-color);
   font-weight: 500;
   transition: color 0.3s;
 }
@@ -62,14 +60,10 @@ nav {
   color: var(--primary-color);
 }
 
-
-
 /* Burger Menu */
 .burger {
   display: none;
   cursor: pointer;
-  /* For smooth animation on transform */
-  transition: transform 0.3s ease;
 }
 
 .burger span {
@@ -81,54 +75,33 @@ nav {
   transition: all 0.3s ease;
 }
 
-/* When burger is active, transform into an "X" */
 .burger.active span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
+
 .burger.active span:nth-child(2) {
   opacity: 0;
 }
+
 .burger.active span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Hero Section */
-
-@media screen and (max-width: 768px) {
-  .hero {
-      flex-direction: column; /* Stack items vertically */
-      align-items: center; /* Center align items */
-      text-align: center; /* Center text for better alignment */
-      padding: 2rem; /* Reduce padding for small screens */
-  }
-
-  .img {
-      order: -1; /* Moves image to the top */
-      width: 60%; /* Make it larger for better visibility */
-      max-width: 300px; /* Limit size */
-  }
-
-  .hero-text {
-      max-width: 90%; /* Allow text to be wider */
-      padding-bottom: 2rem; /* Add space below the text */
-  }
-}
-
-
 .hero {
   display: flex;
-  align-items: flex-end; /* Align content to the bottom */
+  align-items: center;
   justify-content: space-between;
-  height: 100vh; /* Make the section full height */
+  height: 100vh;
   padding: 5rem;
-  background: linear-gradient(to right, #000000, #1f2937);
-  color: white;
+  background: linear-gradient(to right, #000, var(--primary-color));
+  color: #fff;
+  margin-top: 70px; /* to account for fixed header */
 }
 
 .hero-text {
   max-width: 50%;
-  text-align: left; /* Align text to the left */
-  padding-bottom: 3rem; /* Add spacing at the bottom */
+  padding-bottom: 3rem;
 }
 
 .hero h1 {
@@ -141,46 +114,12 @@ nav {
   max-width: 400px;
 }
 
-.hero img {
+.hero-img {
   width: 40%;
   max-width: 500px;
   border-radius: 10px;
+  object-fit: cover;
 }
-
-.cv-button {
-display: inline-block;
-margin-top: 1rem;
-padding: 10px 20px;
-background-color: transparent;
-border: 2px solid white;
-color: white;
-text-decoration: none;
-font-weight: bold;
-border-radius: 5px;
-transition: 0.3s;
-}
-
-.cv-button:hover {
-background-color: var(--secondary-color);
-color: black;
-}
-.nv-button {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 10px 20px;
-  background-color: transparent;
-  border: 2px solid rgb(255, 255, 255);
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: 0.3s;
-  }
-  .nv-button:hover {
-    background-color: var(--secondary-color);
-    color: #1f2937;
-    }
-
 
 /* Main Content */
 .container {
@@ -198,9 +137,9 @@ section {
   margin-bottom: 2rem;
   text-align: center;
   font-weight: bold;
-
 }
 
+/* Projects Grid */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -208,7 +147,7 @@ section {
 }
 
 .project-card {
-  background: white;
+  background: #fff;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -222,7 +161,7 @@ section {
 .project-card img {
   width: 100%;
   height: 200px;
-  object-fit:contain;
+  object-fit: contain;
 }
 
 .project-content {
@@ -238,56 +177,31 @@ section {
 }
 
 .skill-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-.skill-card:hover {
-  transform: translateY(20px);
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  text-align: center;
-}
-
-.skill-card {
-  background: white;
+  background: #fff;
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers content */
+  align-items: center;
   justify-content: center;
 }
 
+.skill-card:hover {
+  transform: translateY(20px);
+}
+
 .skill-card img {
-  width: 60px; /* Set uniform size */
-  height: 60px; /* Maintain square aspect ratio */
-  object-fit: contain; /* Ensures full visibility */
-  margin-bottom: 10px; /* Space between image and text */
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 10px;
 }
 
 /* Contact Section */
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
 .form-group {
   margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
 }
 
 .form-group input,
@@ -299,44 +213,100 @@ section {
   font-size: 1rem;
 }
 
+.parent-container {
+  display: flex;
+  justify-content: center;
+}
+
 .btn {
   background-color: var(--primary-color);
-  color: white;
-  padding:.75rem 1.5rem;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.5s;
 }
-.parent-container {
-  display: flex;
-  justify-content: center;
-}
 
 .btn:hover {
   background-color: var(--secondary-color);
 }
 
+/* CV & Nav Button */
+.cv-button,
+.nv-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.cv-button:hover,
+.nv-button:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-links a img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.social-links a img:hover {
+  transform: scale(1.2);
+}
+
+#follow-me {
+  margin-top: 220px;
+  margin-bottom: -100px;
+  color: var(--primary-color);
+}
+
+.last-title {
+  margin-top: 100px;
+  font-size: 0.8rem;
+  text-align: center;
+  font-weight: bold;
+}
+
 /* Footer */
 footer {
   background-color: var(--text-color);
-  color: white;
+  color: #fff;
   text-align: center;
   padding: 2rem;
   margin-top: 4rem;
 }
 
-/* Responsive Design */
+/* Responsive Styles for Mobile Devices */
 @media (max-width: 768px) {
-  /* Navigation Links: Instead of display:none, use transform and opacity for smooth animation */
+  nav {
+    margin: 20px;
+  }
+  
+  /* Show burger and hide nav-links by default */  
   .nav-links {
     position: absolute;
     top: 60px;
     right: 0;
     width: 100%;
-    background-color: white;
-    text-align: center;
+    background-color: #fff;
     flex-direction: column;
     padding: 1rem 0;
     transform: translateX(100%);
@@ -347,52 +317,41 @@ footer {
     transform: translateX(0);
     opacity: 1;
   }
-  /* Show burger menu on small screens */
   .burger {
     display: block;
   }
+  
+  /* Hero Section adjustments */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+  .hero-img {
+    order: -1;
+    width: 60%;
+    max-width: 300px;
+    margin-bottom: 2rem;
+  }
+  .hero-text {
+    max-width: 90%;
+  }
+  
+  /* Adjust headings for mobile */
   .hero h1 {
     font-size: 2rem;
   }
   .section-title {
     font-size: 1.75rem;
   }
-}
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 10px;
-}
-
-.social-links a img {
-  width: 40px; /* Adjust size as needed */
-  height: 40px;
-  transition: transform 0.3s ease;
-}
-
-.social-links a img:hover {
-  transform: scale(1.2);
-}
-#follow-me {
-  margin-top: 220px;
-  margin-bottom: -100px;
-  color: #1f2937;
-}
- .last-title{
-  margin-top: 100px;
-  font-size: 0.8rem;
-  margin-bottom: 0rem;
-  text-align: center;
-  font-weight: bold;
- }
-
-/* Keyframes for a simple fade-in effect */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+  
+  /* Stack project cards vertically on small screens */
+  .projects-grid {
+    grid-template-columns: 1fr;
   }
-  to {
-    opacity: 1;
+  
+  /* Stack skill cards vertically on small screens */
+  .skills-grid {
+    grid-template-columns: 1fr;
   }
 }
